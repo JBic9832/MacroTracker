@@ -1,5 +1,6 @@
 import { FirebaseApp, FirebaseOptions, getApps, initializeApp } from "firebase/app";
 import { Auth, getAuth } from "firebase/auth";
+import { Database, getDatabase } from "firebase/database";
 
 console.log("Initializing Firebase App");
 
@@ -21,7 +22,9 @@ if (!getApps().length) {
 }
 
 let auth: Auth;
+let database: Database;
 
 auth = getAuth(app);
+database = getDatabase(app);
 
-export { app, auth };
+export { app, auth, database };
