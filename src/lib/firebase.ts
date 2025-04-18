@@ -1,6 +1,6 @@
 import { FirebaseApp, FirebaseOptions, getApps, initializeApp } from "firebase/app";
 import { Auth, getAuth } from "firebase/auth";
-import { Database, getDatabase } from "firebase/database";
+import { Firestore, getFirestore } from "firebase/firestore";
 
 console.log("Initializing Firebase App");
 
@@ -22,9 +22,9 @@ if (!getApps().length) {
 }
 
 let auth: Auth;
-let database: Database;
+let database: Firestore;
 
 auth = getAuth(app);
-database = getDatabase(app);
+database = getFirestore(app);
 
 export { app, auth, database };

@@ -1,4 +1,4 @@
-import { ref, set } from "firebase/database";
+import { collection, doc, setDoc } from "firebase/firestore";
 import { database } from "./firebase";
 
 export enum Meal {
@@ -19,10 +19,9 @@ export interface MealEntry {
     calories: number;
 };
 
-// Defines a list of entries for the whole day
+// Will hold a collection of entries in the database
 export interface JournalEntry {
     creationDate: Date;
-    meals: MealEntry[];
     totalProtien: number;
     totalFat: number;
     totalCarbs: number;
@@ -37,15 +36,4 @@ export interface Goal {
     targetCalories: number;
 }
 
-export const createJournalEntry = (userId) => {
-    const entry: JournalEntry = {
-        creationDate: new Date(),
-        meals: [],
-        totalProtien: 0,
-        totalFat: 0,
-        totalCarbs: 0,
-        totalCalories: 0
-    };
 
-    set(ref(database, "users/" + userId), entry);
-}
